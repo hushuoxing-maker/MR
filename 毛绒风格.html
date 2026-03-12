@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>像素世界 · 高级像素风格海报提示词生成器-古月AI智能体</title>
+<title>毛绒治愈 · 毛绒质感海报提示词生成器 - 古月AI智能体</title>
 
 <style>
 
@@ -12,7 +12,7 @@
 box-sizing:border-box;
 margin:0;
 padding:0;
-font-family:"Courier New","Lucida Console",monospace;
+font-family:"Microsoft YaHei",sans-serif;
 }
 
 /* 页面背景 */
@@ -20,54 +20,33 @@ font-family:"Courier New","Lucida Console",monospace;
 body{
 
 background:
-radial-gradient(circle at 20% 20%,#1d1d3a,#0a0a12 60%),
-linear-gradient(135deg,#111,#000);
+linear-gradient(135deg,#ffd9e6,#ffe9d9,#e7e6ff,#d9f3ff);
 
-color:#fff;
+background-size:400% 400%;
+
+animation:bgMove 15s ease infinite;
 
 min-height:100vh;
 
 padding:60px;
 
-}
-
-/* 像素网格 */
-
-body::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:
-
-repeating-linear-gradient(
-0deg,
-rgba(255,255,255,0.03) 0 1px,
-transparent 1px 4px
-),
-
-repeating-linear-gradient(
-90deg,
-rgba(255,255,255,0.03) 0 1px,
-transparent 1px 4px
-);
-
-pointer-events:none;
+color:#444;
 
 }
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+/* 容器 */
 
 .container{
-
 max-width:1200px;
 margin:auto;
-
 }
 
 /* 标题 */
@@ -80,15 +59,11 @@ font-size:36px;
 
 margin-bottom:50px;
 
-font-weight:700;
-
-background:linear-gradient(90deg,#ffcc00,#ff6600);
+background:linear-gradient(90deg,#ff7fa5,#ffb6a3,#8ecaff);
 
 -webkit-background-clip:text;
 
 color:transparent;
-
-text-shadow:0 0 15px rgba(255,170,0,0.6);
 
 }
 
@@ -96,36 +71,31 @@ text-shadow:0 0 15px rgba(255,170,0,0.6);
 
 .card{
 
-background:
-
-linear-gradient(
+background:linear-gradient(
 145deg,
-rgba(40,40,60,0.9),
-rgba(20,20,30,0.9)
+rgba(255,255,255,0.75),
+rgba(255,255,255,0.55)
 );
 
-padding:28px;
+backdrop-filter:blur(14px);
 
-border-radius:18px;
+padding:30px;
 
-border:2px solid rgba(255,170,0,0.5);
+border-radius:28px;
 
 box-shadow:
 
-0 0 25px rgba(255,170,0,0.2);
+0 20px 40px rgba(0,0,0,0.12);
 
-margin-bottom:40px;
+margin-bottom:30px;
 
 }
 
 /* 输入 */
 
 label{
-
 font-size:14px;
-
-color:#ffcc66;
-
+opacity:0.8;
 }
 
 input{
@@ -137,13 +107,11 @@ padding:14px;
 margin-top:8px;
 margin-bottom:18px;
 
-background:rgba(0,0,0,0.6);
+border-radius:12px;
 
-border:1px solid #444;
+border:none;
 
-border-radius:10px;
-
-color:#fff;
+background:rgba(255,255,255,0.9);
 
 font-size:15px;
 
@@ -153,35 +121,28 @@ font-size:15px;
 
 button{
 
-width:100%;
-
-padding:14px;
+padding:14px 20px;
 
 border:none;
 
-border-radius:10px;
-
-font-size:16px;
-
-font-weight:700;
+border-radius:14px;
 
 cursor:pointer;
+
+font-size:16px;
 
 background:
 
 linear-gradient(
-135deg,
-#ffcc00,
-#ff6600
+90deg,
+#ff9eb5,
+#ffc7a8,
+#9bd6ff
 );
 
-color:#000;
+color:#fff;
 
-box-shadow:
-
-0 0 15px rgba(255,170,0,0.6);
-
-transition:0.25s;
+transition:0.3s;
 
 }
 
@@ -189,13 +150,15 @@ button:hover{
 
 transform:translateY(-2px);
 
-box-shadow:
-
-0 0 25px rgba(255,170,0,0.9);
+box-shadow:0 12px 24px rgba(0,0,0,0.2);
 
 }
 
-/* 结果区 */
+.generate{
+width:100%;
+}
+
+/* 结果区域 */
 
 .results{
 
@@ -205,7 +168,7 @@ grid-template-columns:repeat(auto-fill,minmax(460px,1fr));
 
 gap:22px;
 
-margin-top:30px;
+margin-top:40px;
 
 }
 
@@ -216,32 +179,26 @@ margin-top:30px;
 background:
 
 linear-gradient(
-160deg,
-rgba(35,35,50,0.95),
-rgba(20,20,30,0.95)
+135deg,
+#ffffff,
+#fff2f6
 );
 
-border-radius:16px;
+border-radius:22px;
 
-padding:22px;
-
-border-left:5px solid #ffcc00;
+padding:24px;
 
 box-shadow:
 
-0 0 18px rgba(255,170,0,0.2);
+0 15px 35px rgba(0,0,0,0.15);
 
-transition:0.25s;
+transition:0.3s;
 
 }
 
 .promptCard:hover{
 
-transform:translateY(-3px);
-
-box-shadow:
-
-0 0 28px rgba(255,170,0,0.4);
+transform:translateY(-4px);
 
 }
 
@@ -255,7 +212,7 @@ font-weight:700;
 
 margin-bottom:10px;
 
-color:#ffcc00;
+color:#ff7fa5;
 
 }
 
@@ -265,11 +222,9 @@ color:#ffcc00;
 
 white-space:pre-wrap;
 
-font-size:14px;
-
 line-height:1.7;
 
-color:#ddd;
+font-size:14px;
 
 }
 
@@ -277,27 +232,33 @@ color:#ddd;
 
 .copyBtn{
 
-margin-top:12px;
+margin-top:14px;
 
-background:linear-gradient(135deg,#ff6600,#ffcc00);
+background:
 
-border:none;
+linear-gradient(
+90deg,
+#ff9eb5,
+#ffc7a8
+);
 
 padding:8px 16px;
 
-border-radius:8px;
+border-radius:10px;
 
-color:#000;
+border:none;
 
 cursor:pointer;
 
-font-weight:700;
+font-size:14px;
+
+color:#fff;
 
 }
 
 .copyBtn.copied{
 
-background:#ffaa33;
+background:#4ade80;
 
 }
 
@@ -308,23 +269,23 @@ background:#ffaa33;
 
 <div class="container">
 
-<h1>像素世界 · 高级像素风格海报提示词生成器-古月AI智能体</h1>
+<h1>毛绒治愈 · 毛绒质感海报提示词生成器 - 古月AI智能体</h1>
 
 <div class="card">
 
 <label>海报主题</label>
-<input id="title" placeholder="例如：像素世界大冒险">
+<input id="title" placeholder="例如：暖萌毛绒派对">
 
 <label>海报副标题</label>
-<input id="subtitle" placeholder="例如：复古像素风格游戏发布">
+<input id="subtitle" placeholder="例如：冬日治愈毛绒世界">
 
 <label>海报类型</label>
-<input id="type" placeholder="例如：游戏发布 / 独立音乐 / 数字艺术">
+<input id="type" placeholder="例如：潮玩发布 / 亲子活动 / 冬季品牌">
 
 <label>辅助文字（可输入多个，用 / 分隔）</label>
-<input id="assist" placeholder="例如：LEVEL UP / BOSS / EXTRA LIFE">
+<input id="assist" placeholder="例如：暖萌来袭 / 限量发售 / 治愈系">
 
-<button onclick="generate()">生成20组提示词</button>
+<button class="generate" onclick="generate()">生成20组提示词</button>
 
 </div>
 
@@ -339,41 +300,38 @@ return arr[Math.floor(Math.random()*arr.length)];
 }
 
 let assistTexts=[
-"NEW GAME","SCORE","LIVE","LEVEL UP",
-"EXTRA LIFE","TOP 10","BOSS",
-"任务完成","宝箱开启","像素币",
-"奖励领取","按键操作","道具收集",
-"复古限量","像素狂欢"
-];
 
-let visualElements=[
-
-"像素勇者与怪物战斗",
-"像素城堡关卡地图",
-"像素森林探索",
-"8-bit 太空冒险",
-"16-bit 马赛克特效",
-"像素金币与宝箱",
-"红白机卡带与手柄",
-"像素火焰与技能特效",
-"像素迷宫探索",
-"复古街机屏幕",
-"CRT 扫描线效果",
-"像素城市夜景"
+"限量发售","暖萌来袭","治愈系","限定款",
+"冬日限定","毛绒新品","温暖上市","萌趣系列",
+"可爱推荐","暖心礼物","萌宠主题","亲子活动",
+"毛绒派对","冬季新品","治愈企划","毛绒艺术"
 
 ];
 
-let layoutStyles=[
+let visuals=[
 
-"主标题屏幕中央像素大字，副标题小字在下方，辅助文字像素标签散落",
+"泰迪熊与毛线团场景",
+"毛绒兔兔与毛球装饰",
+"毛绒猫咪与针织毛毯",
+"毛绒怪兽与毛球云朵",
+"毛绒蛋糕与毛绒水果",
+"毛绒仙人掌与毛绒花朵",
+"毛绒星球与毛绒云朵",
+"毛绒家具与毛绒玩偶"
 
-"主标题顶部横贯，副标题像素对话框，辅助文字沿边缘分布",
+];
 
-"主标题像素云托起，副标题生命值条显示，辅助文字小图标点缀",
+let layouts=[
 
-"主标题居中突出，副标题游戏提示框，辅助文字状态栏显示",
+"主标题毛绒立体字居中，副标题毛毡标签悬挂",
 
-"主标题像素屏幕效果，副标题弹窗小字，辅助文字散落角落"
+"主标题毛线编织字体，副标题刺绣小标",
+
+"标题毛绒立体字突出，副标题针织标签",
+
+"标题毛绒大字悬浮，副标题毛毡牌子装饰",
+
+"标题与毛球互动排版，副标题贴布标签"
 
 ];
 
@@ -392,8 +350,6 @@ return;
 let container=document.getElementById("results");
 container.innerHTML="";
 
-/* 用户辅助词 */
-
 let userAssist=[];
 
 if(assistInput){
@@ -410,20 +366,22 @@ assist=rand(userAssist);
 assist=rand(assistTexts);
 }
 
-let visual=rand(visualElements);
-let layout=rand(layoutStyles);
+let visual=rand(visuals);
+let layout=rand(layouts);
 
 let text=`主标题：${title}
 副标题：${subtitle}
-海报类型：${type || "像素风格活动"}
+海报类型：${type || "毛绒治愈风格海报"}
 
 辅助文字：${assist}
 
 核心视觉元素：${visual}
 
+视觉表现手法：绒毛纤维细节、蓬松空气感、毛线编织纹理、毛球装饰、柔和光影过渡。
+
 文字布局：${layout}
 
-风格：像素风格，高级视觉设计，8-bit/16-bit像素块美学，复古游戏感，方块构成，色彩高饱和，怀旧科技氛围，整体画面参考经典像素游戏UI界面。`;
+风格：毛绒质感视觉设计，柔软温暖，萌趣治愈，绒毛细节丰富，蓬松感强烈，色彩柔和。`;
 
 let card=document.createElement("div");
 
@@ -446,11 +404,13 @@ btn.onclick=function(){
 navigator.clipboard.writeText(text);
 
 btn.innerText="已复制";
+
 btn.classList.add("copied");
 
 setTimeout(()=>{
 
 btn.innerText="复制提示词";
+
 btn.classList.remove("copied");
 
 },2000);
